@@ -29,30 +29,72 @@ session_start();
                         <?php $receta_list = $_SESSION['receta_rut'];  ?>
                         <?php // print_r($receta_list); 
                         ?>
+                        <form action="controllers/BuscarRecetaId.php" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Armazón</th>
+                                    <th>Tipo Cristal</th>
+                                    <th>Fecha Retiro</th>
+                                    <th></th>
 
-                        <table>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Armazón</th>
-                                <th>Tipo Cristal</th>
-                                <th>Fecha Retiro</th>
-                                <th></th>
-                            </tr>
-                            <?php foreach ($receta_list as $receta) { ?>
-                                <td><?= $receta['nombre_cliente'] ?></td>
-                                <td><?= $receta['armazon'] ?></td>
-                                <td><?= $receta['tipo_cristal'] ?></td>
-                                <td><?= $receta['fecha_retiro'] ?></td>
-                                <td>
-                                    <button name="id_receta" value="<?= $receta['id'] ?>" class="btn-small blue">
-                                        detalle
-                                    </button>
-                                </td>
+                                </tr>
+                                <?php foreach ($receta_list as $receta) { ?>
+                                    <tr>
+                                        <td><?= $receta['nombre_cliente'] ?></td>
+                                        <td><?= $receta['armazon'] ?></td>
+                                        <td><?= $receta['tipo_cristal'] ?></td>
+                                        <td><?= $receta['fecha_retiro'] ?></td>
+                                        <td>
+                                            <button name="id" value="<?= $receta['id'] ?>" class="btn-small blue">
+                                                detalle
+                                            </button>
+                                        </td>
 
-                            <?php } ?>
+                                    </tr>
+
+                                <?php } ?>
+                            </table>
+                            <?php if (isset($_SESSION['detalle'])) { ?>
+                                <h4>Detalle Receta</h4>
+                                <div class="row left-align">
+                                    <div class="col l4">
+                                        <b>Tipo de lente</b>
+                                        <br>
+                                        <span class="blue-grey-text lighten-3">
+                                            <?= $_SESSION['detalle']['tipo_lente'] ?>
+                                        </span>
+                                    </div>
+                                    <div class="col l4">
+                                        <b>Base</b> <br>
+                                        <span class="blue-grey-text lighten-3">
+                                            <?= $_SESSION['detalle']['base'] ?>
+                                        </span>
+                                    </div>
+                                    <div class="col l4">
+                                        <b>Tipo Cristal</b><bR>
+                                        <span class="blue-grey-text lighten-3">
+                                            <?= $_SESSION['detalle']['tipo_cristal'] ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row left-align">
+                                    <div class="col l4">
+                                        <b>Armazón</b><br> <?= $_SESSION['detalle']['armazon'] ?>
+                                    </div>
+                                    <div class="col l4">
+                                        <b>Material Cristal</b><br> <?= $_SESSION['detalle']['material_cristal'] ?>
+                                    </div>
+                                    <div class="col l4">
+                                        <b>Vendedor</b><br> <?= $_SESSION['detalle']['nombre_vendedor'] ?>
+                                    </div>
+                                </div>
+                                <br>
+                            <?php //print_r($_SESSION['detalle']);
+                            } ?>
 
 
-                        </table>
+                        </form>
 
 
                     <?php } else {

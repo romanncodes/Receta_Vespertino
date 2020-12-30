@@ -37,6 +37,7 @@ session_start();
                                     <th>Tipo Cristal</th>
                                     <th>Fecha Retiro</th>
                                     <th></th>
+                                    <th></th>
 
                                 </tr>
                                 <?php foreach ($receta_list as $receta) { ?>
@@ -49,6 +50,11 @@ session_start();
                                             <button name="id" value="<?= $receta['id'] ?>" class="btn-small blue">
                                                 detalle
                                             </button>
+                                        </td>
+                                        <td>
+                                            <a href="http://localhost/receta_v/controllers/ExportarPDF.php?id=<?= $receta['id'] ?>" target="_blank">
+                                                PDF
+                                            </a>
                                         </td>
 
                                     </tr>

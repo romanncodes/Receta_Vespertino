@@ -18,6 +18,8 @@ session_start();
         <div class="row">
             <div class="col l2 m12 s12"></div>
             <div class="col l8 m12 s12 center">
+                <a class="btn-small orange" href="insert_receta.php">crear receta</a>
+                <br>
                 <h4>Buscar Receta por rut</h4>
                 <form action="controllers/BuscarRecetaRut.php" method="POST">
                     <input type="text" placeholder="Rut Cliente" name="rut">
